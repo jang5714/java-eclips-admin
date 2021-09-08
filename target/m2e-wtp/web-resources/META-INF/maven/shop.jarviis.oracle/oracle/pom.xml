@@ -13,14 +13,12 @@ xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/
 	<properties>
 		<java-version>11</java-version>
 		<spring-version>5.2.6.RELEASE</spring-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<aspectj-version>1.6.10</aspectj-version>
 		<slf4j-version>1.6.6</slf4j-version>
 		<lombok-version>1.16.10</lombok-version>
 		<tiles-version>3.0.5</tiles-version>
 		<mybatis-version>3.5.5</mybatis-version>
-		<mybatis-spring-version>1.3.0</mybatis-spring-version>
+		<mybatis-spring-version>2.0.3</mybatis-spring-version>
 		<mysql-version>5.1.6</mysql-version>
 		<commons-el-version>1.0</commons-el-version>
 		<commons-fileupload-version>1.3.3</commons-fileupload-version>
@@ -36,11 +34,20 @@ xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/
 		<mockito-version>1.10.19</mockito-version>
 		<easymock-version>2.4</easymock-version>
 		<hamcrest-version>1.3</hamcrest-version>
-		<mariadb-version>2.6.1</mariadb-version>
+		<!-- <mariadb-version>2.6.1</mariadb-version> -->
+		<oracle-version>11.2.0.3</oracle-version>
 		<servlet-version>3.1.0</servlet-version>
 		<dbunit-version>2.4.3</dbunit-version>
 		<unitils-version>2.2</unitils-version>
 	</properties>
+	<!-- <repositories>
+	    JDBC를 관리하는 repository
+	    <repository>
+	        <id>oracle</id>
+	        <name>ORACLE JDBC Repository</name>
+	        <url>https://repo.spring.io/plugins-release/</url>
+	    </repository>
+	</repositories> -->
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -307,7 +314,7 @@ xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/
 			<artifactId>mybatis-spring</artifactId>
 			<version>${mybatis-spring-version}</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-version}</version>
@@ -316,7 +323,12 @@ xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/
 		    <groupId>org.mariadb.jdbc</groupId>
 		    <artifactId>mariadb-java-client</artifactId>
 		    <version>${mariadb-version}</version>
-		</dependency>                       
+		</dependency> -->
+		<!-- <dependency>
+		    <groupId>com.oracle</groupId>
+		    <artifactId>ojdbc6</artifactId>
+		    <version>11.2.0.3</version>
+		</dependency> -->        
 	</dependencies>
     <build>
         <plugins>
