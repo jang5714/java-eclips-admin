@@ -1,4 +1,4 @@
-package shop.jarviis.oracle.customer.mapper;
+package shop.jarviis.oracle.mappers;
 
 import org.springframework.stereotype.Repository;
 
