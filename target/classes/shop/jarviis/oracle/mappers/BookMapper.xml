@@ -1,3 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="shop.jarviis.oracle.mappers.BookMapper"></mapper>
+<mapper namespace="shop.jarviis.oracle.mappers.BookMapper">
+	<select id="findAll" resultType="shop.jarviis.oracle.book.domain.BookDto">
+		select 
+			book_id bookId,
+			bookName bookName,
+			price,
+			pub_id pubId
+		 from books
+	</select>
+	<select id="findById" resultType="shop.jarviis.oracle.book.domain.BookDto" parameterType="int">
+		SELECT 
+	        book_id bookId,
+	        bookName bookName,
+	        price,
+	        pub_id pubId
+	    FROM books
+	    WHERE book_id like ${bookId}
+	</select>
+	<select id="findByPubId" resultType="shop.jarviis.oracle.book.domain.BookDto" parameterType="int">
+		SELECT 
+	        book_id bookId,
+	        bookName bookName,
+	        price,
+	        pub_id pubId
+	    FROM books
+	    WHERE pub_id like ${pubId}
+	</select>
+	<select id="findByBookName" resultType="shop.jarviis.oracle.book.domain.BookDto" parameterType="string">
+		SELECT 
+	        book_id bookId,
+	        bookName bookName,
+	        price,
+	        pub_id pubId
+	    FROM books
+	    where bookName '%'|| #{value} || '%'	
+    </select>
+    <select id="findByPrice" resultType="shop.jarviis.oracle.book.domain.BookDto" 
+	parameterType="int">
+		select 
+			book_id bookId,
+			bookName bookName,
+			price,
+			pub_id pubId
+		 from books
+         where price >= ${price}      
+	</select>
+</mapper>
