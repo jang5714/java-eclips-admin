@@ -6,15 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.jarviis.oracle.book.domain.BookDto;
 import shop.jarviis.oracle.book.service.BookService;
 
 @Controller
+@RequestMapping("/books")
 public class BookController {
-	
+	@Autowired BookDto book;
 	@Autowired BookService bookService;
 	
+	@RequestMapping(value="/join", method= {RequestMethod.POST})
+	public String join(
+			@RequestParam("bookId") int bookId,
+			@RequestParam("bookName") String bookName,
+			@RequestParam("price") int price,
+			@RequestParam("pubId") int pubId
+			) {
+		System.out.println("bookId : " + bookId);
+		System.out.println("bookName : " + bookName);
+		System.out.println("price : " + price);
+		System.out.println("pubId : " + pubId);
+		book.setBookId(bookId);
+		book.setBookName(bookName);
+		book.setPrice(price);
+		book.setPubId(pubId);
+		bookService.save(book);
+		
+		return "/book/Login";
+	}
 	@RequestMapping("/books")
 	public void findAll() {
 		List<BookDto> books = bookService.findAll();
