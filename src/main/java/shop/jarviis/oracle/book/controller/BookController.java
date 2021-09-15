@@ -2,6 +2,7 @@ package shop.jarviis.oracle.book.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.jarviis.oracle.book.domain.BookDto;
 import shop.jarviis.oracle.book.service.BookService;
+import shop.jarviis.oracle.common.GenericInterface;
 
 @Controller
 @RequestMapping("/books")
@@ -18,38 +20,38 @@ public class BookController {
 	@Autowired BookDto book;
 	@Autowired BookService bookService;
 	
-	@RequestMapping(value="/join", method= {RequestMethod.POST})
-	public String join(
-			@RequestParam("bookId") int bookId,
-			@RequestParam("bookName") String bookName,
-			@RequestParam("price") int price,
-			@RequestParam("pubId") int pubId
-			) {
-		System.out.println("bookId : " + bookId);
-		System.out.println("bookName : " + bookName);
-		System.out.println("price : " + price);
-		System.out.println("pubId : " + pubId);
-		book.setBookId(bookId);
-		book.setBookName(bookName);
-		book.setPrice(price);
-		book.setPubId(pubId);
+	@RequestMapping(value= "/register", method= {RequestMethod.POST})
+	public String save(BookDto book) {
 		bookService.save(book);
-		
-		return "/book/Login";
+		return "도서 저장 완료";
 	}
-	@RequestMapping("/books")
-	public void findAll() {
-		List<BookDto> books = bookService.findAll();
-		for(BookDto book : books) {
-			System.out.println(book.toString());	
+
+	@RequestMapping("/")
+	public String findAll() {
+		List<BookDto> bookDtos = bookService.findAll();
+		for (BookDto book : bookDtos) {
+			System.out.println(book.toString());
 		}
+		return "bookID 조회 완료";
+	}
+	@RequestMapping(value = "/update", method= {RequestMethod.POST})
+	public String update(BookDto book) {
+		bookService.update(book);
+		return "책 업로드 완료";
+	}
+	@RequestMapping("/delete")
+	public String delete(@Param("bookId") int bookId) {
+		bookService.delete(bookId);
+		return "도서 삭제 완료";
+		
 	}
 	
 	@RequestMapping("/books/{bookTd}")
 	public void findById(@PathVariable int bookId) {
-		BookDto book = bookService.findById(bookId);
+		BookDto book = bookService.findby(bookId);
 		System.out.println(book.toString());
 	}
+	
 	@RequestMapping("/books/pubId/{pubId}")
 	public void findByPubId(@PathVariable int pubId) {
 		List<BookDto> books = bookService.findByPubId(pubId);
@@ -67,4 +69,6 @@ public class BookController {
 		List<BookDto> books = bookService.findByPrice(price);
 		System.out.println(books.toString());
 	}
+
+	
 }

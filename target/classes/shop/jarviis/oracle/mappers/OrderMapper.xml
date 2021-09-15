@@ -35,4 +35,16 @@
     FROM orders
     Where book_id like ${bookId}
 </select>
+<update id="update" parameterType="string">
+	update orders set
+		cust_id = ${custId},
+		book_id = ${bookId},
+		order_price = ${orderPrice},
+		order_date = #{orderDate}
+	where order_Id like ${orderId}
+</update>
+<delete id="delete" parameterType="int">
+	delete from orders 
+	where order_Id like ${orderId}
+</delete>
 </mapper>

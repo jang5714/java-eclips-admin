@@ -70,17 +70,24 @@ span.psw {
 </head>
 <body>
 
-<h2>로그인 폼</h2>
+<h2>회원가입</h2>
 
-<form action="/action_page.php" method="post">
+<form action="${contextPath}/customers/join" method="post">
+
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+  	<label for="custId"><b>custId</b></label>
+    <input type="text" placeholder="custId" name="custId" required>
+  	
+    <label for="custName"><b>custName</b></label>
+    <input type="text" placeholder="custName" name="custName" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="address"><b>address</b></label>
+    <input type="text" placeholder="address" name="address" required>
+     
+     <label for="phone"><b>phone</b></label>
+    <input type="text" placeholder="phone" name="phone" required>
         
-    <button type="submit">Login</button>
+    <button type="submit">Join</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

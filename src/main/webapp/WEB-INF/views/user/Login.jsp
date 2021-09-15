@@ -70,11 +70,11 @@ span.psw {
 </head>
 <body>
 
-<h2>로그인 폼</h2>
+<h2>로그인</h2>
 
 <form action="/action_page.php" method="post">
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
+   <div class="container">
+    <label for="uname"><b>User Name</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
 
     <label for="psw"><b>Password</b></label>

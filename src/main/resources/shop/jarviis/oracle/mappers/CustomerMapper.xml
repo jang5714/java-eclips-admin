@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop.jarviis.oracle.mappers.CustomerMapper">
+	
+	<select id="findByCustId" resultType="shop.jarviis.oracle.customer.domain.CustomerDto" parameterType="int">
+		SELECT 
+	        cust_id custId,
+	        cust_name custName,
+	        address,
+	        phone
+	    FROM customers
+	    WHERE cust_id like ${custId}
+	</select>
 	<insert id="save" parameterType="shop.jarviis.oracle.customer.domain.CustomerDto">
-	 insert into 
-	 customers (cust_id, cust_name, address, phone)
-	 values (${custId}, #{custName}, #{address}, #{phone})
+		 insert into 
+		 customers (cust_id, cust_name, address, phone)
+		 values (${custId}, #{custName}, #{address}, #{phone})
 	</insert>
 	<select id="findAll" resultType="shop.jarviis.oracle.customer.domain.CustomerDto">
 		SELECT 
@@ -14,13 +24,19 @@
 	        phone
 	    FROM customers
 	</select>
-	<select id="findByCustId" resultType="shop.jarviis.oracle.customer.domain.CustomerDto" parameterType="int">
-		SELECT 
-        cust_id custId,
-        cust_name custName,
-        address,
-        phone
-    FROM customers
-    WHERE cust_id like ${custId}
-	</select>
+	
+	<update id="update" parameterType="string">
+		update set
+		cust_name #{custName}
+		address #{address}
+		phone #{phone}
+		where cust_id like ${custId}
+	</update>
+	<delete id="delete" parameterType="string">
+		delete from customers
+		where cust_id like ${custId}
+	</delete>
+	
+	
+	
 </mapper>

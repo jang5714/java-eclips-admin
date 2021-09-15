@@ -13,15 +13,6 @@ public class BookServiceImpl implements BookService{
 	
 	@Autowired BookMapper bookMapper;
 
-	@Override
-	public List<BookDto> findAll() {
-		return bookMapper.findAll();
-	}
-
-	@Override
-	public BookDto findById(int bookId) {
-		return bookMapper.findById(bookId);
-	}
 
 	@Override
 	public List<BookDto> findByPubId(int pubId) {
@@ -42,6 +33,27 @@ public class BookServiceImpl implements BookService{
 	public void save(BookDto book) {
 		bookMapper.save(book);
 	}
+
+	@Override
+	public BookDto findby(Integer id) {
+		return bookMapper.findby(id);
+	}
+
+	@Override
+	public List<BookDto> findAll() {
+		return bookMapper.findAll();
+	}
+
+	@Override
+	public void update(BookDto a) {
+		bookMapper.update(a);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		bookMapper.delete(id);
+	}
+
 	
 	
 }

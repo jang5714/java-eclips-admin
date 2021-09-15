@@ -51,4 +51,15 @@
 		 from books
          where price >= ${price}      
 	</select>
+	<update id="update" parameterType="int">
+		update books set
+			bookName = #{bookName},
+			price = ${price},
+			pub_id = ${pubId}
+		where book_id like ${bookId}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from books
+		where book_id like ${bookId}
+	</delete>
 </mapper>

@@ -12,11 +12,7 @@ import shop.jarviis.oracle.publisher.domain.PublisherDto;
 public class PublisherServiceImpl implements PublisherService {
 	@Autowired PublisherMapper publisherMapper;
 
-	@Override
-	public List<PublisherDto> findAll() {
-		return publisherMapper.findAll();
-	}
-
+	
 	@Override
 	public List<PublisherDto> findByPubName(String pubName) {
 		return publisherMapper.findByPubName(pubName);
@@ -28,9 +24,32 @@ public class PublisherServiceImpl implements PublisherService {
 	}
 
 	@Override
-	public void save(PublisherDto publisher) {
-		publisherMapper.save(publisher);
+	public void save(PublisherDto t) {
+		publisherMapper.save(t);
 	}
+
+	@Override
+	public PublisherDto findby(Integer id) {
+		return publisherMapper.findby(id);
+		
+	}
+
+	@Override
+	public List<PublisherDto> findAll() {
+		return publisherMapper.findAll();
+		
+	}
+
+	@Override
+	public void update(PublisherDto a) {
+		publisherMapper.update(a);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		publisherMapper.delete(id);
+	}
+
 	
 	
 }

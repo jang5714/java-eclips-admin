@@ -13,16 +13,37 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired CustomerMapper customermapper;
 
 	@Override
+	public void save(CustomerDto custId) {
+		customermapper.save(custId);
+	}
+
+	@Override
+	public CustomerDto findby(Integer id) {
+		return null;
+	}
+
+	@Override
 	public List<CustomerDto> findAll() {
 		return customermapper.findAll();
 	}
+
 	@Override
-	public CustomerDto findByCustId(int custId) {
-		return customermapper.findByCustId(custId);
+	public void update(CustomerDto a) {
+		customermapper.update(a);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		customermapper.delete(id);
 		
 	}
+
 	@Override
-	public void save(CustomerDto customer) {
-		customermapper.save(customer);
+	public List<CustomerDto> findById(String custId) {
+		return customermapper.findByCustId(custId);
 	}
+
+	
+
+	
 }

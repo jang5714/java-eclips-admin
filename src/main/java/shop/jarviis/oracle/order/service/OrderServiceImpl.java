@@ -12,10 +12,6 @@ import shop.jarviis.oracle.order.domain.OrderDto;
 public class OrderServiceImpl implements OrderService{
 	@Autowired OrderMapper orderMapper;
 
-	@Override
-	public List<OrderDto> findAll() {
-		return orderMapper.findAll();
-	}
 
 	@Override
 	public List<OrderDto> findByCustId(int custId) {
@@ -28,9 +24,30 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void save(OrderDto order) {
-		orderMapper.save(order);
+	public void save(OrderDto t) {
+		orderMapper.save(t);
 	}
+
+	@Override
+	public List<OrderDto> findAll() {
+		return orderMapper.findAll();
+	}
+
+	@Override
+	public void update(OrderDto a) {
+		orderMapper.update(a);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		orderMapper.delete(id);
+	}
+
+	@Override
+	public OrderDto findby(Integer id) {
+		return orderMapper.findby(id);
+	}
+
 	
 	
 }
