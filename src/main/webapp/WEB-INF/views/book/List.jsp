@@ -3,10 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="ctx" value="<%= application.getContextPath()%>" />
 <jsp:include page="../common/head.jsp"/>
 <body>
 
 <h2>책 목록</h2>
+<a href="${ctx}/move/home/intro">초기 화면</a>
+<a href="${ctx}/move/book/Register">추가 등록</a>
 
 <form action="<%= application.getContextPath() %>/books" method="post">
 
@@ -23,7 +27,7 @@
     <label for="pubId"><b>pubId</b></label>
     <input type="text" placeholder="pubId" name="pubId" required>
     
-    <button type="submit">regist</button>
+    <button type="submit">register</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

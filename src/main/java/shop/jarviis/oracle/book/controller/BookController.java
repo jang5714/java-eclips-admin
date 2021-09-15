@@ -23,7 +23,7 @@ public class BookController {
 	@RequestMapping(value= "/register", method= {RequestMethod.POST})
 	public String save(BookDto book) {
 		bookService.save(book);
-		return "도서 저장 완료";
+		return "redirect:/move/book/List";
 	}
 
 	@RequestMapping("/")
