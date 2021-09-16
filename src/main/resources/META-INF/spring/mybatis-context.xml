@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="shop.jarviis.oracle.book.model.BookDto" alias="book"/>
+		<typeAlias type="shop.jarviis.oracle.customer.model.CustomerDto" alias="customer"/>
+		<typeAlias type="shop.jarviis.oracle.order.model.OrderDto" alias="order"/>
+		<typeAlias type="shop.jarviis.oracle.publisher.model.PublisherDto" alias="publisher"/>
+	</typeAliases>
+</configuration>

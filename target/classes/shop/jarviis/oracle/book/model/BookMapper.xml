@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop.jarviis.oracle.book.model.BookMapper">
+	<insert id="save" parameterType="book">
+	insert into
+	books (book_id, bookName, price, pub_id)
+	values (${bookId}, #{bookName}, ${price}, ${pubId})
+	</insert>
+	<select id="findAll" resultType="book">
+		select 
+			book_id bookId,
+			bookName bookName,
+			price,
+			pub_id pubId
+		 from books
+	</select>
+	<select id="findById" resultType="book" parameterType="int">
+		SELECT 
+	        book_id bookId,
+	        bookName bookName,
+	        price,
+	        pub_id pubId
+	    FROM books
+	    WHERE book_id like ${bookId}
+	</select>
+	<select id="findByPubId" resultType="book" parameterType="int">
+		SELECT 
+	        book_id bookId,
+	        bookName bookName,
+	        price,
+	        pub_id pubId
+	    FROM books
+	    WHERE pub_id like ${pubId}
+	</select>
+	<select id="findByBookName" resultType="book" parameterType="string">
+		SELECT 
+	        book_id bookId,
+	        bookName bookName,
+	        price,
+	        pub_id pubId
+	    FROM books
+	    where bookName like '%' || #{value} || '%'	
+    </select>
+    <select id="findByPrice" resultType="book" 
+	parameterType="int">
+		select 
+			book_id bookId,
+			bookName bookName,
+			price,
+			pub_id pubId
+		 from books
+         where price >= ${price}      
+	</select>
+	<update id="update" parameterType="int">
+		update books set
+			bookName = #{bookName},
+			price = ${price},
+			pub_id = ${pubId}
+		where book_id like ${bookId}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from books
+		where book_id like ${bookId}
+	</delete>
+</mapper>

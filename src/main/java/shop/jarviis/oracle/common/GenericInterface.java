@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
-import shop.jarviis.oracle.customer.domain.CustomerDto;
-import shop.jarviis.oracle.order.domain.OrderDto;
+import shop.jarviis.oracle.customer.model.CustomerDto;
+import shop.jarviis.oracle.order.model.OrderDto;
 
 public interface GenericInterface<T, U> {
 	

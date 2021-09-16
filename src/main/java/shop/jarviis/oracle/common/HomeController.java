@@ -36,6 +36,6 @@ public class HomeController {
 	@RequestMapping("/move/{dir}/{jsp}")
 	public String join(@PathVariable String dir, @PathVariable String jsp) {
 		if (dir.equals("home")) {return "redirect:/";}
-		return dir +"/"+jsp;
+		return dir+"/"+jsp;
 	}
 }

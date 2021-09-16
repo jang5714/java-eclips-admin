@@ -22,7 +22,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-	<mybatis-spring:scan base-package="shop.jarviis.oracle.mappers"/>
+	<mybatis-spring:scan base-package="shop.jarviis.oracle"/>
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<value>classpath:mybatis/database.properties</value>
@@ -36,7 +36,8 @@
 	</bean>
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 		<property name="dataSource" ref="basicDataSource"/>
-		<property name="mapperLocations" value="classpath:shop/jarviis/oracle/mappers/*.xml"/>
+		<property name="mapperLocations" value="classpath:shop/jarviis/oracle/**/model/*.xml"/>
+		<property name="configLocation" value="classpath:/META-INF/spring/mybatis-context.xml"/>
 	</bean>
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
 		<property name="dataSource" ref="basicDataSource"/>

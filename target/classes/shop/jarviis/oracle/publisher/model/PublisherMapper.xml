@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop.jarviis.oracle.publisher.model.PublisherMapper">
+	<insert id="save" parameterType="publisher">
+		insert into
+		publishers (pub_id, pub_name, mgr_name, phone)
+		values (${pubId}, #{pubName}, #{mgrName}, #{phone})
+	</insert>
+	<select id="findAll" resultType="publisher">
+		SELECT 
+	        pub_id pubId,
+	        pub_Name pubName,
+	        mgr_name mgrName,
+	        phone
+    	FROM publishers
+	</select>
+	<select id="findByPubName" resultType="publisher" parameterType="string">
+		SELECT 
+	        pub_id pubId,
+	        pub_Name pubName,
+	        mgr_name mgrName,
+	        phone
+	    FROM publishers
+	    WHERE pub_name like '%' || #{value} || '%'
+	</select>
+	<select id="findByPhone" resultType="publisher" parameterType="string">
+		SELECT 
+	        pub_id pubId,
+			pub_Name pubName,
+	        mgr_name mgrName,
+	        phone
+	    FROM publishers
+	    WHERE phone like '%' || #{value} || '%'
+	</select>
+	<update id="update" parameterType="int">
+		update publishers set
+			pub_name = #{pubName},
+			mgr_name = #{mgrName},
+			phone = #{phone}
+		where pub_Id like ${pubId}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from publishers
+		where pub_Id like ${pubId}
+	</delete>
+</mapper>

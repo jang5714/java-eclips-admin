@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop.jarviis.oracle.customer.model.CustomerMapper">
+	
+	<select id="findByCustId" resultType="customer" parameterType="int">
+		SELECT 
+	        cust_id custId,
+	        cust_name custName,
+	        address,
+	        phone
+	    FROM customers
+	    WHERE cust_id like ${custId}
+	</select>
+	<insert id="save" parameterType="customer">
+		 insert into 
+		 customers (cust_id, cust_name, address, phone)
+		 values (${custId}, #{custName}, #{address}, #{phone})
+	</insert>
+	<select id="findAll" resultType="customer">
+		SELECT 
+	        cust_id custId,
+	        cust_name custName,
+	        address,
+	        phone
+	    FROM customers
+	</select>
+	
+	<update id="update" parameterType="string">
+		update set
+		cust_name #{custName}
+		address #{address}
+		phone #{phone}
+		where cust_id like ${custId}
+	</update>
+	<delete id="delete" parameterType="string">
+		delete from customers
+		where cust_id like ${custId}
+	</delete>
+	
+	
+	
+</mapper>
